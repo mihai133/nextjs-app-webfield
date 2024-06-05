@@ -8,7 +8,7 @@ import SignupForm from "../ui/signup-form"
 
 export default function Signup() {
   return (
-    <div className="w-full lg:grid lg:min-h-[600px] h-[93vh] lg:grid-cols-2 xl:min-h-[800px]">
+    <div className="w-full lg:grid lg:min-h-[600px] h-screen lg:grid-cols-2 xl:min-h-[800px]">
       <div className="flex items-center justify-center py-12">
         <SignupForm />
       </div>
