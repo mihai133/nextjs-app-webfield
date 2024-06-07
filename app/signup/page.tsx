@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Image from "next/image"
 import Link from "next/link"
-import SignupForm from "../ui/signup-form"
+import SignupForm from "../ui/User/signup-form"
 
 
 export default function Signup() {
@@ -14,7 +14,7 @@ export default function Signup() {
       </div>
       <div className="hidden bg-muted lg:block">
         <Image
-          src="/placeholder.svg"
+          src="/assets/placeholder-image.png"
           alt="Image"
           width="1920"
           height="1080"

@@ -2,7 +2,7 @@ import { Menu, RepeatIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import * as Logo from '../../assets/ThewebfieldSVG.svg'
+import Logo from '../../assets/ThewebfieldSVG.svg'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 
@@ -17,7 +17,7 @@ export default function Header() {
           <Image src={Logo} alt="The Webfield" width={150} />
         </Link>
 
-        <div className="justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <div className="flex align-center justify-between gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <div className='hidden md:flex'>
 
 
@@ -44,9 +44,7 @@ export default function Header() {
           </div>
           <Sheet>
             <SheetTrigger className='md:hidden'>
-              <Button variant={"outline"}>
-                <Menu className="h-5 w-5" />
-              </Button>
+              <Menu className="h-5 w-5" />
             </SheetTrigger>
             <SheetContent className="py-[100px]">
               <SheetHeader>
