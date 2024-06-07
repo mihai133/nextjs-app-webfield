@@ -4,8 +4,8 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import { db } from "./app/lib/db"
 
 export const { 
+  handlers: { GET,POST },
   auth,
-  handlers,
   signIn,
   signOut,
 } = NextAuth({
