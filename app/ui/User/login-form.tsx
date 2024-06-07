@@ -1,10 +1,21 @@
+'use client';
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useFormState } from 'react-dom'
+import { loginUser } from '../../lib/userActions/actions'
+
+const initialState: { message: string; status: number } = {
+  message: '',
+  status: 200
+}
 
 export default function LoginForm() {
+  const [state, formAction] = useFormState(loginUser, initialState);
+
   return (
     <div className="mx-auto grid w-[400px] gap-6">
       <div className="grid gap-2 text-center">
@@ -13,12 +24,13 @@ export default function LoginForm() {
           Enter your email below to login to your account
         </p>
       </div>
-      <div className="grid gap-4">
+      <form action={formAction} className="grid gap-4">
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
           <Input
             id="email"
             type="email"
+            name='email'
             placeholder="mail@example.com"
             required
           />
@@ -33,7 +45,7 @@ export default function LoginForm() {
               Forgot your password?
             </Link>
           </div>
-          <Input id="password" type="password" required />
+          <Input id="password" type="password" name='password' required />
         </div>
         <Button type="submit" className="w-full">
           Login
@@ -41,7 +53,7 @@ export default function LoginForm() {
         <Button variant="outline" className="w-full">
           Login with Google
         </Button>
-      </div>
+      </form>
       <div className="mt-4 text-center text-sm">
         Don&apos;t have an account?{" "}
         <Link href="/signup" className="underline">
