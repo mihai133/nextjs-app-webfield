@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import Header from "./ui/Header/HeaderIndex";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
+        <main>
 
+          <Header />
+          {children}
+        </main>
+        <Toaster />
       </body>
     </html>
   );
