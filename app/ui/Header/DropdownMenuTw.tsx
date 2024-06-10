@@ -10,7 +10,6 @@ import { auth, signOut } from '@/auth'
 export default async function DropdownMenuTw() {
   const session = await auth()
   const user = session?.user
-  console.log(session)
 
   return (
     <DropdownMenu>
@@ -39,16 +38,13 @@ export default async function DropdownMenuTw() {
             </>
           )
           : (
-            // <Link className={` ${buttonVariants({ variant: "ghost" })}`} href="/login" >
-            //   signout
-            // </Link>
             <form action={async () => {
               'use server'
 
               await signOut({ redirectTo: '/login', redirect: true });
             }}>
 
-              <Button type='submit' variant={"ghost"}>
+              <Button className='w-[100%] px-2 py-0 justify-start' type='submit' variant={"ghost"}>
                 Sign out
               </Button>
             </form>
