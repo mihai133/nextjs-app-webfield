@@ -7,6 +7,7 @@ import { CircleUser } from 'lucide-react'
 import Link from 'next/link'
 import { auth, signOut } from '@/auth'
 import LinkTw from '@/components/ui/LinkTw'
+import SignoutForm from '../User/signout-form'
 
 export default async function DropdownMenuTw() {
   const session = await auth()
@@ -28,7 +29,11 @@ export default async function DropdownMenuTw() {
             Settings
           </LinkTw>
         </DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem>
+          <LinkTw href='#'>
+            Support
+          </LinkTw>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         {!user ?
           (
@@ -43,16 +48,7 @@ export default async function DropdownMenuTw() {
             </>
           )
           : (
-            <form action={async () => {
-              'use server'
-
-              await signOut({ redirectTo: '/login', redirect: true });
-            }}>
-
-              <Button className='w-[100%] px-2 py-0 justify-start' type='submit' variant={"ghost"}>
-                Sign out
-              </Button>
-            </form>
+            <SignoutForm />
           )
         }
 
