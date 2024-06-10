@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import Logo from '../../assets/ThewebfieldSVG.svg'
+import LinkTw from '@/components/ui/LinkTw'
 
 export default function DesktopMenu() {
   return (
@@ -12,36 +12,23 @@ export default function DesktopMenu() {
       >
         <Image src={Logo} alt="The Webfield" width={400} />
       </Link>
-      <Link
-        href="/dashboard"
-        className="text-foreground transition-colors hover:text-foreground"
-      >
+      <LinkTw href='/dashboard'>
         Dashboard
-      </Link>
-      <Link
-        href="#"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
+      </LinkTw>
+      <LinkTw href='#'>
         Orders
-      </Link>
-      <Link
-        href="#"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
+      </LinkTw>
+      <LinkTw href='#'>
         Products
-      </Link>
-      <Link
-        href="#"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
+      </LinkTw>
+      <LinkTw href='#'>
         Customers
-      </Link>
-      <Link
-        href="#"
-        className="text-muted-foreground transition-colors hover:text-foreground"
-      >
+      </LinkTw>
+      <LinkTw href='#'>
         Analytics
-      </Link>
+      </LinkTw>
+
+
     </nav>
   )
 }

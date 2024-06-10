@@ -6,6 +6,7 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { CircleUser } from 'lucide-react'
 import Link from 'next/link'
 import { auth, signOut } from '@/auth'
+import LinkTw from '@/components/ui/LinkTw'
 
 export default async function DropdownMenuTw() {
   const session = await auth()
@@ -22,7 +23,11 @@ export default async function DropdownMenuTw() {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem >
+          <LinkTw href="/settings">
+            Settings
+          </LinkTw>
+        </DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuSeparator />
         {!user ?
