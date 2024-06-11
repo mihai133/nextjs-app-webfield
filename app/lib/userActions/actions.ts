@@ -3,7 +3,7 @@
 import { compare, hash } from "bcrypt";
 import { db } from "../db";
 import { LogInSchema, SignUpSchema } from "../schemas/userSchemas";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { AuthError } from "next-auth";
 
@@ -74,9 +74,12 @@ export async function loginUser(prevState: any, formData: FormData) {
     })
   } catch (error) {
     if(error instanceof AuthError) {
+      console.log(error)
       switch (error.type) {
         case "CredentialsSignin" :
           return { error: "Invalid credentials!"}
+        case "AccessDenied":
+          return { error: "Access denied!"}
         default: 
           return {error: "Something went wrong!"}
       }
@@ -85,35 +88,7 @@ export async function loginUser(prevState: any, formData: FormData) {
     throw error
   }
 }
-  //   try {
-  //     const {email, password} =  LogInSchema.parse({
-  //       email: formData.get('email'),
-  //       password: formData.get('password'),
-  //     });
-  
-  //      const signInData = await signIn("Credentials", {
-  //       email: email,
-  //       password: password
-  //     });
-  // console.log(email, password)
-  //     console.log(signInData)
-  
-      // user = await db.user.findUnique({ where: { email: email } });
-  
-      // if (!user) {
-      //   return { user:null, message: "User not found",status: 404 };
-      // }
-  
-  
-      // const isPasswordValid = await compare(password, user.password);
-  
-      // if (!isPasswordValid) {
-      //   return { user:null, message: "Invalid password",status: 401 };
-      // }
-  
-      // return {user: user, message: "Logged in successfully", status: 200};
-    // } catch (error) {
-    //   if (error instanceof Error) {
-    //     return { message: error?.message, status: 500 };
-    //   }
-    // }
+
+export async function userSignOut() {
+  await signOut({ redirectTo: '/login', redirect: true });
+}
