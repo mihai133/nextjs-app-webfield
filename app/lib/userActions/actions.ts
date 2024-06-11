@@ -74,9 +74,12 @@ export async function loginUser(prevState: any, formData: FormData) {
     })
   } catch (error) {
     if(error instanceof AuthError) {
+      console.log(error)
       switch (error.type) {
         case "CredentialsSignin" :
           return { error: "Invalid credentials!"}
+        case "AccessDenied":
+          return { error: "Access denied!"}
         default: 
           return {error: "Something went wrong!"}
       }

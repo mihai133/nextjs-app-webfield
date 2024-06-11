@@ -5,25 +5,29 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
-import { useFormState } from 'react-dom'
+import { useFormState, useFormStatus } from 'react-dom'
 import { loginUser } from '../../lib/userActions/actions'
-import { useToast } from '@/components/ui/use-toast';
+import { toast, useToast } from '@/components/ui/use-toast';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
-const initialState: { error: string, message: string; status: number } = {
-  error: '',
+
+const initialState = {
+  error: null || '',
   message: '',
   status: 200
 }
 
 export default function LoginForm() {
-  const { toast } = useToast();
-  const [state, formAction] = useFormState(loginUser, initialState);
 
+  const [state, formAction, isPending] = useFormState(loginUser, initialState);
+  const { pending, data } = useFormStatus();
 
+  if (state?.error) toast({
+    title: "Error",
+    description: state?.error
+  })
   return (
     <>
-
-
       <div className="mx-auto grid w-[400px] gap-6">
         <div className="grid gap-2 text-center">
           <h1 className="text-3xl font-bold">Login</h1>
@@ -55,9 +59,7 @@ export default function LoginForm() {
             </div>
             <Input id="password" type="password" name='password' required />
           </div>
-          <Button type="submit" className="w-full">
-            Login
-          </Button>
+          <SubmitButton />
           <Button variant="outline" className="w-full">
             Login with Google
           </Button>
@@ -70,5 +72,16 @@ export default function LoginForm() {
         </div>
       </div >
     </>
+  )
+}
+
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" className="w-full">
+      {pending ? <LoadingSpinner /> : "Login"}
+    </Button>
   )
 }

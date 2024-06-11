@@ -18,7 +18,7 @@ export default {
           const {email, password} = validatedFields.data;
 
           const user = await db.user.findUnique({where: {email: email}})
-          if(!user || !user.password) return null;
+          if(!user || !user.password) return {error: "User not found"};
 
           const passwordMatch = await compare(password, user.password)
 
