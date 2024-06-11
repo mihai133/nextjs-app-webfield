@@ -6,9 +6,10 @@ import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
-import { loginUser } from '../../lib/userActions/actions'
+
 import { toast, useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { loginUser } from '@/app/lib/userActions/actions';
 
 
 const initialState = {

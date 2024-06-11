@@ -1,4 +1,5 @@
-import LoginForm from "@/app/ui/User/login-form"
+
+import LoginForm from "@/components/User/login-form"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"

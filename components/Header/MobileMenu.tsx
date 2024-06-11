@@ -3,7 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu, Package2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Logo from '../../assets/ThewebfieldSVG.svg'
+import Logo from "@/app/assets/ThewebfieldSVG.svg"
 import React from 'react'
 
 export default function MobileMenu() {

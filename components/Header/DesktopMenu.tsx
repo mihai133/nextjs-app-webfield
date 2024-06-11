@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Logo from '../../assets/ThewebfieldSVG.svg'
+import Logo from "@/app/assets/ThewebfieldSVG.svg"
 import LinkTw from '@/components/ui/LinkTw'
 
 export default function DesktopMenu() {

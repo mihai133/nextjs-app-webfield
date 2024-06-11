@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./styles/App.scss"
-import Header from "./ui/Header/HeaderIndex";
+
 import { Toaster } from "@/components/ui/toaster";
+import Header from "@/components/Header/HeaderIndex";
 
 const inter = Inter({ subsets: ["latin"] });
 
